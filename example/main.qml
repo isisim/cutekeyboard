@@ -1,8 +1,8 @@
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.CuteKeyboard 1.0
-import QtQuick.Layouts 1.12
-import QtQuick.Window 2.12
+import QtQuick
+import QtQuick.Controls
+import CuteKeyboard
+import QtQuick.Layouts
+import QtQuick.Window
 
 Window {
     id: window
@@ -31,7 +31,6 @@ Window {
                 width: 200
                 height: 50
             }
-
         }
 
         RowLayout {
@@ -50,7 +49,6 @@ Window {
                 height: 50
                 EnterKeyAction.enabled: false
             }
-
         }
 
         RowLayout {
@@ -69,7 +67,6 @@ Window {
                 height: 50
                 EnterKeyAction.enabled: true
             }
-
         }
 
         RowLayout {
@@ -88,9 +85,7 @@ Window {
                 height: 50
                 inputMethodHints: Qt.ImhDigitsOnly
             }
-
         }
-
     }
 
     InputPanel {
@@ -110,7 +105,6 @@ Window {
                 target: inputPanel
                 y: window.height - inputPanel.height
             }
-
         }
 
         transitions: Transition {
@@ -124,11 +118,7 @@ Window {
                     duration: 150
                     easing.type: Easing.InOutQuad
                 }
-
             }
-
         }
-
     }
-
 }
