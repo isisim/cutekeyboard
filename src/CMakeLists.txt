@@ -1,27 +1,26 @@
+# Generated from src.pro.
 cmake_minimum_required(VERSION 3.21.1)
+project(cutekeyboardplugin VERSION 1.0 LANGUAGES CXX)
 
-project(CuteKeyboard)
-
-## Encontre o pacote Qt
-find_package(Qt6 COMPONENTS Qml Core Quick Gui REQUIRED)
-qt_standard_project_setup(REQUIRES 6.4)
-
-## Configuração do projeto
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+# set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
-set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Defina os arquivos de origem'
-set(SOURCES
-    "EnterKeyAction.cpp"
-    "EnterKeyActionAttachedType.cpp"
-    "InputPanelIface.cpp"
-    "VirtualKeyboardInputContextPlugin.cpp"
-    "VirtualKeyboardInputContext.cpp"
-    "DeclarativeInputEngine.cpp"
-)
+# set(CMAKE_AUTOMOC ON)
+# set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Defina os cabeçalhos
+# if(NOT DEFINED INSTALL_EXAMPLESDIR)
+#     set(INSTALL_EXAMPLESDIR "examples")
+# endif()
+
+# set(INSTALL_EXAMPLEDIR "$$[QT_INSTALL_PLUGINS]/platforminputcontexts")
+
+find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core)
+find_package(Qt6 REQUIRED COMPONENTS Gui Qml Quick)
+qt_standard_project_setup(REQUIRES 6.4)
+
 set(HEADERS
     "EnterKeyAction.hpp"
     "EnterKeyActionAttachedType.hpp"
@@ -31,12 +30,15 @@ set(HEADERS
     "DeclarativeInputEngine.h"
 )
 
-# Adicione os recursos
-set(RESOURCES
-    "resources.qrc"
+set(SOURCES
+    "EnterKeyAction.cpp"
+    "EnterKeyActionAttachedType.cpp"
+    "InputPanelIface.cpp"
+    "VirtualKeyboardInputContextPlugin.cpp"
+    "VirtualKeyboardInputContext.cpp"
+    "DeclarativeInputEngine.cpp"
 )
 
-# Adicione os arquivos QML
 set(QML_FILES
     "qml/AlternativeKeysPopup.qml"
     "qml/BackspaceKey.qml"
@@ -56,12 +58,14 @@ set(QML_FILES
     "qml/SymbolLayout.qml"
 )
 
-qt_add_qml_module(CuteKeyboard
-    URI "CuteKeyboard"
-    VERSION 1.0
-    # OUTPUT_DIRECTORY
-    #     "CuteKeyboard"
-    RESOURCE_PREFIX /
+set(RESOURCES
+    "resources.qrc"
+)
+
+qt_add_qml_module(cutekeyboardplugin
+    URI "QtQuick.CuteKeyboard"
+    VERSION ${PROJECT_VERSION}
+    # PLUGIN_TARGET cutekeyboardplugin
     QML_FILES
         ${QML_FILES}
     SOURCES
@@ -71,16 +75,21 @@ qt_add_qml_module(CuteKeyboard
         ${RESOURCES}
 )
 
-# Link com as bibliotecas Qt necessárias
-target_link_libraries(CuteKeyboard PUBLIC
-    Qt6::Qml
-    Qt6::Quick
+target_link_libraries(cutekeyboardplugin PUBLIC
+    Qt::Core
+    Qt::Gui
     Qt::GuiPrivate
+    Qt::Qml
+    Qt::Quick
     Qt::QuickPrivate
 )
 
-# Instalação dos arquivos QML
-install(FILES ${QML_FILES} DESTINATION ${QT_QML_OUTPUT_DIRECTORY}/QtQuick/CuteKeyboard)
+install(
+    FILES ${QML_FILES}
+    DESTINATION ${CMAKE_PREFIX_PATH}/qml/QtQuick/CuteKeyboard
+)
 
-# Instalação da biblioteca
-install(TARGETS CuteKeyboard DESTINATION ${QT_INSTALL_PLUGINS}/platforminputcontexts)
+install(
+    TARGETS cutekeyboardplugin
+    DESTINATION ${CMAKE_PREFIX_PATH}/plugins/platforminputcontexts
+)
