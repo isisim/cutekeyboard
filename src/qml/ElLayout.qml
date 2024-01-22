@@ -1,6 +1,6 @@
-import QtQml 2.0
-import QtQuick 2.0
-import QtQuick.Layouts 1.12
+import QtQml
+import QtQuick
+import QtQuick.Layouts
 
 Loader {
     property var inputPanel
@@ -72,7 +72,6 @@ Loader {
                 BackspaceKey {
                     inputPanelRef: inputPanel
                 }
-
             }
 
             RowLayout {
@@ -136,7 +135,6 @@ Loader {
                     weight: 283
                     inputPanelRef: inputPanel
                 }
-
             }
 
             RowLayout {
@@ -202,7 +200,6 @@ Loader {
                 ShiftKey {
                     weight: 204
                 }
-
             }
 
             RowLayout {
@@ -227,11 +224,8 @@ Loader {
                 HideKey {
                     weight: 205
                 }
-
             }
-
         }
-
     }
 
     Component {
@@ -311,7 +305,6 @@ Loader {
                 BackspaceKey {
                     inputPanelRef: inputPanel
                 }
-
             }
 
             RowLayout {
@@ -387,7 +380,6 @@ Loader {
                     weight: 283
                     inputPanelRef: inputPanel
                 }
-
             }
 
             RowLayout {
@@ -461,7 +453,6 @@ Loader {
                 ShiftKey {
                     weight: 204
                 }
-
             }
 
             RowLayout {
@@ -486,11 +477,7 @@ Loader {
                 HideKey {
                     weight: 205
                 }
-
             }
-
         }
-
     }
-
 }

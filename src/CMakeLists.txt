@@ -51,6 +51,7 @@ set(QML_FILES
     "qml/Key.qml"
     "qml/KeyModel.qml"
     "qml/KeyPopup.qml"
+    "qml/PtLayout.qml"
     "qml/QwertyLayout.qml"
     "qml/ShiftKey.qml"
     "qml/SpaceKey.qml"

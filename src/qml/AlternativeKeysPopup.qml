@@ -1,6 +1,6 @@
-import CuteKeyboard 1.0
-import QtQuick 2.0
-import QtQuick.Layouts 1.12
+import CuteKeyboard
+import QtQuick
+import QtQuick.Layouts
 
 Item {
     id: root
@@ -8,31 +8,32 @@ Item {
     property var alternativeKeys: []
 
     function open(keybutton, inputPanel) {
-        alternativeKeys = keybutton.alternativeKeys;
-        width = keybutton.width * 1 * alternativeKeys.length;
-        height = keybutton.height * 1.2;
-        var KeyButtonGlobalLeft = keybutton.mapToItem(inputPanel, 0, 0).x;
-        var KeyButtonGlobalTop = keybutton.mapToItem(inputPanel, 0, 0).y;
-        var PopupGlobalLeft = KeyButtonGlobalLeft - (width - keybutton.width) / 2;
-        var PopupGlobalTop = KeyButtonGlobalTop - height - keyboardRect.height / 40 * 1.5;
-        var PopupLeft = root.parent.mapFromItem(inputPanel, PopupGlobalLeft, PopupGlobalTop).x;
-        y = root.parent.mapFromItem(inputPanel, PopupGlobalLeft, PopupGlobalTop).y;
+        alternativeKeys = keybutton.alternativeKeys
+        width = keybutton.width * 1 * alternativeKeys.length
+        height = keybutton.height * 1.2
+        var KeyButtonGlobalLeft = keybutton.mapToItem(inputPanel, 0, 0).x
+        var KeyButtonGlobalTop = keybutton.mapToItem(inputPanel, 0, 0).y
+        var PopupGlobalLeft = KeyButtonGlobalLeft - (width - keybutton.width) / 2
+        var PopupGlobalTop = KeyButtonGlobalTop - height - keyboardRect.height / 40 * 1.5
+        var PopupLeft = root.parent.mapFromItem(inputPanel, PopupGlobalLeft, PopupGlobalTop).x
+        y = root.parent.mapFromItem(inputPanel, PopupGlobalLeft, PopupGlobalTop).y
         if (PopupGlobalLeft < 0)
-            x = 0;
+            x = 0
         else if ((PopupGlobalLeft + width) > inputPanel.width)
-            x = PopupLeft - (PopupGlobalLeft + width - inputPanel.width);
+            x = PopupLeft - (PopupGlobalLeft + width - inputPanel.width)
         else
-            x = PopupLeft;
-        loadAlternativesKey();
-        visible = true;
+            x = PopupLeft
+        loadAlternativesKey()
+        visible = true
     }
 
     function loadAlternativesKey() {
-        listModel.clear();
+        listModel.clear()
         for (var i = 0; i < alternativeKeys.length; i++) {
             listModel.append({
-                "btnText": InputEngine.uppercase ? alternativeKeys[i].toUpperCase() : alternativeKeys[i]
-            });
+                                 "btnText": InputEngine.uppercase ? alternativeKeys[i].toUpperCase(
+                                                                        ) : alternativeKeys[i]
+                             })
         }
     }
 
@@ -66,11 +67,7 @@ Item {
                     weight: width
                     onClicked: root.visible = false
                 }
-
             }
-
         }
-
     }
-
 }

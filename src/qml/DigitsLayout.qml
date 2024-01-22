@@ -1,6 +1,6 @@
-import CuteKeyboard 1.0
-import QtQuick 2.0
-import QtQuick.Layouts 1.12
+import CuteKeyboard
+import QtQuick
+import QtQuick.Layouts
 
 ColumnLayout {
     property var inputPanel

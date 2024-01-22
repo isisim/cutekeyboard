@@ -1,7 +1,7 @@
-import CuteKeyboard 1.0
-import QtQuick 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.12
+import CuteKeyboard
+import QtQuick
+import QtQuick.Controls
+import QtQuick.Layouts
 
 Button {
     id: key
@@ -29,24 +29,22 @@ Button {
     Layout.fillHeight: true
     onPressed: {
         if (inputPanelRef !== null && showPreview)
-            inputPanelRef.showKeyPopup(key);
-
+            inputPanelRef.showKeyPopup(key)
     }
     onPressedChanged: {
         if (pressed) {
-            opacity = 0.7;
+            opacity = 0.7
             if (alternativeKeys.length > 0)
-                longPressTimer.running = true;
-
+                longPressTimer.running = true
         } else {
-            opacity = 1;
-            longPressTimer.running = false;
+            opacity = 1
+            longPressTimer.running = false
         }
     }
     onReleased: {
         if (!functionKey)
-            InputEngine.virtualKeyClick(btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText, InputEngine.uppercase ? Qt.ShiftModifier : 0);
-
+            InputEngine.virtualKeyClick(btnKey, InputEngine.uppercase ? btnText.toUpperCase() : btnText,
+                                        InputEngine.uppercase ? Qt.ShiftModifier : 0)
     }
 
     Timer {
@@ -56,10 +54,10 @@ Button {
         repeat: false
         running: false
         onTriggered: {
-            enabled = false;
-            inputPanelRef.hideKeyPopup();
-            inputPanelRef.showAlternativesKeyPopup(key);
-            enabled = true;
+            enabled = false
+            inputPanelRef.hideKeyPopup()
+            inputPanelRef.showAlternativesKeyPopup(key)
+            enabled = true
         }
     }
 
@@ -86,7 +84,6 @@ Button {
                 pixelSize: key.height * 0.4
                 capitalization: InputEngine.uppercase ? Font.AllUppercase : Font.MixedCase
             }
-
         }
 
         Image {
@@ -97,7 +94,5 @@ Button {
             anchors.fill: parent
             fillMode: Image.PreserveAspectFit
         }
-
     }
-
 }
