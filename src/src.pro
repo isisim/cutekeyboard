@@ -25,8 +25,8 @@ RESOURCES += \
     resources.qrc
 
 QML_FILES += \
-    qml/qmldir \
-    qml/*.qml
+    CuteKeyboard/qmldir \
+    CuteKeyboard/*.qml
 
 OTHER_FILES += $$QML_FILES
 
