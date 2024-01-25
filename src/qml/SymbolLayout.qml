@@ -7,8 +7,7 @@ Item {
 
     onVisibleChanged: {
         if (!visible)
-            secondPage = false;
-
+            secondPage = false
     }
 
     ColumnLayout {
@@ -79,22 +78,10 @@ Item {
                 btnText: "0"
                 inputPanelRef: inputPanel
             }
-
-            BackspaceKey {
-                inputPanelRef: inputPanel
-            }
-
         }
 
         RowLayout {
             property real keyWeight: 160
-
-            Key {
-                weight: 56
-                functionKey: true
-                showPreview: false
-                btnBackground: "transparent"
-            }
 
             Key {
                 btnKey: Qt.Key_At
@@ -127,6 +114,12 @@ Item {
             }
 
             Key {
+                btnKey: Qt.Key_Underscore
+                btnText: "_"
+                inputPanelRef: inputPanel
+            }
+
+            Key {
                 btnKey: Qt.Key_Minus
                 btnText: "-"
                 inputPanelRef: inputPanel
@@ -143,35 +136,22 @@ Item {
                 btnText: "("
                 inputPanelRef: inputPanel
             }
-
             Key {
                 btnKey: Qt.Key_ParenRight
                 btnText: ")"
                 inputPanelRef: inputPanel
             }
-
-            EnterKey {
-                weight: 283
-                inputPanelRef: inputPanel
-            }
-
         }
 
         RowLayout {
-            property real keyWeight: 156
+            property real keyWeight: 160
 
             Key {
-                weight: 204
                 btnDisplayedText: "1/2"
                 showPreview: false
                 functionKey: true
                 onClicked: secondPage = !secondPage
-            }
-
-            Key {
-                btnKey: Qt.Key_Exclam
-                btnText: "!"
-                inputPanelRef: inputPanel
+                btnBackground: backspace.btnBackground
             }
 
             Key {
@@ -205,14 +185,14 @@ Item {
             }
 
             Key {
-                btnKey: Qt.Key_Semicolon
-                btnText: ";"
+                btnKey: Qt.Key_Slash
+                btnText: "/"
                 inputPanelRef: inputPanel
             }
 
             Key {
-                btnKey: Qt.Key_Slash
-                btnText: "/"
+                btnKey: Qt.Key_Exclam
+                btnText: "!"
                 inputPanelRef: inputPanel
             }
 
@@ -222,40 +202,46 @@ Item {
                 inputPanelRef: inputPanel
             }
 
-            Key {
-                weight: 204
-                btnDisplayedText: "1/2"
-                showPreview: false
-                functionKey: true
-                onClicked: secondPage = !secondPage
+            BackspaceKey {
+                id: backspace
+                inputPanelRef: inputPanel
             }
-
         }
 
         RowLayout {
-            property real keyWeight: 154
+            property real keyWeight: 160
 
             SymbolKey {
-                weight: 217
+                weight: 1.5 * parent.keyWeight
+            }
+
+            Key {
+                btnKey: Qt.Key_Comma
+                btnText: ","
+                inputPanelRef: inputPanel
             }
 
             SpaceKey {
-                weight: 1168
+                weight: 7 * parent.keyWeight
                 inputPanelRef: inputPanel
             }
 
             Key {
                 btnKey: Qt.Key_Period
                 btnText: "."
+                alternativeKeys: "!.?"
                 inputPanelRef: inputPanel
             }
 
             HideKey {
-                weight: 205
+                weight: 1.5 * parent.keyWeight
             }
 
+            EnterKey {
+                weight: 1.5 * parent.keyWeight
+                inputPanelRef: inputPanel
+            }
         }
-
     }
 
     ColumnLayout {
@@ -327,22 +313,10 @@ Item {
                 btnText: "}"
                 inputPanelRef: inputPanel
             }
-
-            BackspaceKey {
-                inputPanelRef: inputPanel
-            }
-
         }
 
         RowLayout {
             property real keyWeight: 160
-
-            Key {
-                weight: 56
-                functionKey: true
-                showPreview: false
-                btnBackground: "transparent"
-            }
 
             Key {
                 btnKey: Qt.Key_Dollar
@@ -373,7 +347,11 @@ Item {
                 btnText: "¥"
                 inputPanelRef: inputPanel
             }
-
+            Key {
+                btnKey: Qt.Key_AsciiCircum
+                btnText: "^"
+                inputPanelRef: inputPanel
+            }
             Key {
                 btnKey: Qt.Key_Equal
                 btnText: "="
@@ -397,29 +375,17 @@ Item {
                 btnText: "]"
                 inputPanelRef: inputPanel
             }
-
-            EnterKey {
-                weight: 283
-                inputPanelRef: inputPanel
-            }
-
         }
 
         RowLayout {
-            property real keyWeight: 156
+            property real keyWeight: 160
 
             Key {
-                weight: 204
                 btnDisplayedText: "2/2"
                 showPreview: false
                 functionKey: true
                 onClicked: secondPage = !secondPage
-            }
-
-            Key {
-                btnKey: Qt.Key_Underscore
-                btnText: "_"
-                inputPanelRef: inputPanel
+                btnBackground: backspace.btnBackground
             }
 
             Key {
@@ -447,6 +413,12 @@ Item {
             }
 
             Key {
+                btnKey: Qt.Key_Semicolon
+                btnText: ";"
+                inputPanelRef: inputPanel
+            }
+
+            Key {
                 btnKey: 8220
                 btnText: '“'
                 inputPanelRef: inputPanel
@@ -464,46 +436,42 @@ Item {
                 inputPanelRef: inputPanel
             }
 
-            Key {
-                btnKey: Qt.Key_AsciiCircum
-                btnText: "^"
+            BackspaceKey {
                 inputPanelRef: inputPanel
             }
-
-            Key {
-                weight: 204
-                btnDisplayedText: "2/2"
-                showPreview: false
-                functionKey: true
-                onClicked: secondPage = !secondPage
-            }
-
         }
 
         RowLayout {
-            property real keyWeight: 154
+            property real keyWeight: 160
 
             SymbolKey {
-                weight: 217
+                weight: 1.5 * parent.keyWeight
+            }
+
+            Key {
+                btnKey: Qt.Key_Comma
+                btnText: ","
+                inputPanelRef: inputPanel
             }
 
             SpaceKey {
-                weight: 1168
+                weight: 7 * parent.keyWeight
                 inputPanelRef: inputPanel
             }
 
             Key {
-                btnKey: Qt.Key_Period
-                btnText: "."
-                inputPanelRef: inputPanel
+                btnKey: 0x2026
+                text: "\u2026"
             }
 
             HideKey {
-                weight: 205
+                weight: 1.5 * parent.keyWeight
             }
 
+            EnterKey {
+                weight: 1.5 * parent.keyWeight
+                inputPanelRef: inputPanel
+            }
         }
-
     }
-
 }

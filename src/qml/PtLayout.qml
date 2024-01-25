@@ -70,22 +70,10 @@ ColumnLayout {
             btnText: "p"
             inputPanelRef: inputPanel
         }
-
-        BackspaceKey {
-            inputPanelRef: inputPanel
-        }
-
     }
 
     RowLayout {
         property real keyWeight: 160
-
-        Key {
-            weight: 56
-            functionKey: true
-            showPreview: false
-            btnBackground: "transparent"
-        }
 
         Key {
             btnKey: Qt.Key_A
@@ -147,18 +135,13 @@ ColumnLayout {
             btnText: "ç"
             inputPanelRef: inputPanel
         }
-
-        EnterKey {
-            weight: 283
-            inputPanelRef: inputPanel
-        }
-
     }
 
     RowLayout {
-        property real keyWeight: 156
+        property real keyWeight: 160
 
         ShiftKey {
+            weight: 1.5 * parent.keyWeight
         }
 
         Key {
@@ -204,53 +187,45 @@ ColumnLayout {
             inputPanelRef: inputPanel
         }
 
+        BackspaceKey {
+            weight: 1.5 * parent.keyWeight
+            inputPanelRef: inputPanel
+        }
+    }
+
+    RowLayout {
+        property real keyWeight: 160
+
+        SymbolKey {
+            weight: 1.5 * parent.keyWeight
+        }
+
         Key {
             btnKey: Qt.Key_Comma
             btnText: ","
             inputPanelRef: inputPanel
         }
 
-        Key {
-            btnKey: Qt.Key_Period
-            btnText: "."
-            inputPanelRef: inputPanel
-        }
-
-        Key {
-            btnKey: Qt.Key_Minus
-            btnText: "-"
-            inputPanelRef: inputPanel
-        }
-
-        ShiftKey {
-            weight: 204
-        }
-
-    }
-
-    RowLayout {
-        property real keyWeight: 154
-
-        SymbolKey {
-            weight: 217
-        }
-
         SpaceKey {
-            weight: 1168
+            weight: 7 * parent.keyWeight
             inputPanelRef: inputPanel
             btnDisplayedText: "Português"
         }
 
         Key {
-            btnKey: Qt.Key_Apostrophe
-            btnText: "'"
+            btnKey: Qt.Key_Period
+            btnText: "."
+            alternativeKeys: "!.?"
             inputPanelRef: inputPanel
         }
 
         HideKey {
-            weight: 205
+            weight: 1.5 * parent.keyWeight
         }
 
+        EnterKey {
+            weight: 1.5 * parent.keyWeight
+            inputPanelRef: inputPanel
+        }
     }
-
 }
